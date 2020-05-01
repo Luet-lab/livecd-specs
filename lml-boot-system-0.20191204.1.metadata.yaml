@@ -1,0 +1,159 @@
+path: /home/travis/gopath/src/github.com/Luet-lab/livecd-specs/build/lml-boot-system-0.20191204.1.package.tar.gz
+dependencies: []
+compilespec:
+  steps:
+  - mv minimal/src/minimal_boot/ /boot/
+  - cp -rfv /boot/bios/* /
+  - cp -rfv /boot/uefi/loader /
+  env: []
+  prelude:
+  - apk --no-cache add ca-certificates tar gzip wget xz rsync git
+  - git clone https://github.com/ivandavidov/minimal.git
+  - cd minimal && git checkout e4ab26d8ee2e9e2e24d47852474d453b19cb0ced
+  - rm -rfv /boot || true
+  image: ""
+  seed: luet/cache:3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+  package:
+    id: 0
+    name: lml-boot
+    version: 0.20191204.1
+    category: system
+    useflags: []
+    state: ""
+    packagerequires:
+    - id: 0
+      name: seed
+      version: '>=0.1'
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    packageconflicts: []
+    isset: false
+    provides: []
+    path: ""
+    description: ""
+    uri: []
+    license: ""
+    labels: {}
+  sourceassertion:
+  - package:
+      id: 0
+      name: alpine
+      version: 3.11.3
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      packagehash: b3fe7815ec48f83b0ca3a729f18fedf56fa305cbf8abfb57eb09464c7dc330e0
+  - package:
+      id: 0
+      name: seed
+      version: "0.1"
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: alpine
+        version: 3.11.3
+        category: distro
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        isset: false
+        provides: []
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        labels: {}
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: b3fe7815ec48f83b0ca3a729f18fedf56fa305cbf8abfb57eb09464c7dc330e0
+      packagehash: 3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+  - package:
+      id: 0
+      name: lml-boot
+      version: 0.20191204.1
+      category: system
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: seed
+        version: '>=0.1'
+        category: distro
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        isset: false
+        provides: []
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        labels: {}
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: 3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+      packagehash: b09d461f6cbc973788ccbf68ebe2e1a8791f1cad1695b2c91e62002cdf5e0dee
+  retrieve: []
+  outputpath: /home/travis/gopath/src/github.com/Luet-lab/livecd-specs/build
+  unpack: true
+  includes:
+  - /boot$|/boot/.*
+  - /EFI$|/EFI/.*
+  - /loader$|/loader/.*
+checksums:
+  sha256: 9d83ecd2ec936f05bf4eebee49b64aa53448a5cbbefd472826f81521ee5e653b
+sourceassertion: []
+compressiontype: gzip
+files:
+- EFI/BOOT/startup.nsh
+- boot/bios/EFI/BOOT/startup.nsh
+- boot/bios/boot/syslinux/syslinux.cfg
+- boot/syslinux/syslinux.cfg
+- boot/uefi/loader/entries/mll-x86.conf
+- boot/uefi/loader/entries/mll-x86_64.conf
+- boot/uefi/loader/loader.conf
+- loader/entries/mll-x86.conf
+- loader/entries/mll-x86_64.conf
+- loader/loader.conf

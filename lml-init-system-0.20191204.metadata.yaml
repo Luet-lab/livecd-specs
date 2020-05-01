@@ -1,0 +1,167 @@
+path: /home/travis/gopath/src/github.com/Luet-lab/livecd-specs/build/lml-init-system-0.20191204.package.tar.gz
+dependencies: []
+compilespec:
+  steps:
+  - rsync -A -a --delete --numeric-ids --exclude 'minimal/src/minimal_rootfs/*' --recursive
+    -d -H --one-file-system --xattrs minimal/src/minimal_rootfs/  --exclude '/etc/resolv.conf'  --exclude
+    '/etc/hostname'  --exclude '/sys/' --exclude '/etc/hosts'  --exclude '/sys/*'
+    --exclude '/proc/*' --exclude '/dev/pts/*'  /
+  env: []
+  prelude:
+  - apk --no-cache add ca-certificates tar gzip wget xz rsync git
+  - git clone https://github.com/ivandavidov/minimal.git
+  - cd minimal && git checkout 9ac67c9b677396e70efbae239e137509f0372e40
+  image: ""
+  seed: luet/cache:3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+  package:
+    id: 0
+    name: lml-init
+    version: "0.20191204"
+    category: system
+    useflags: []
+    state: ""
+    packagerequires:
+    - id: 0
+      name: seed
+      version: '>=0.1'
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    packageconflicts: []
+    isset: false
+    provides: []
+    path: ""
+    description: ""
+    uri: []
+    license: ""
+    labels: {}
+  sourceassertion:
+  - package:
+      id: 0
+      name: alpine
+      version: 3.11.3
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      packagehash: b3fe7815ec48f83b0ca3a729f18fedf56fa305cbf8abfb57eb09464c7dc330e0
+  - package:
+      id: 0
+      name: seed
+      version: "0.1"
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: alpine
+        version: 3.11.3
+        category: distro
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        isset: false
+        provides: []
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        labels: {}
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: b3fe7815ec48f83b0ca3a729f18fedf56fa305cbf8abfb57eb09464c7dc330e0
+      packagehash: 3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+  - package:
+      id: 0
+      name: lml-init
+      version: "0.20191204"
+      category: system
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: seed
+        version: '>=0.1'
+        category: distro
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        isset: false
+        provides: []
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        labels: {}
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: 3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+      packagehash: efcaa455cdc3a091abac853642b6d4a636bb5b13beaa2efe78b4497272cfe33d
+  retrieve: []
+  outputpath: /home/travis/gopath/src/github.com/Luet-lab/livecd-specs/build
+  unpack: true
+  includes:
+  - /etc$|/etc/.*
+  - /var$|/var/.*
+  - /init
+checksums:
+  sha256: ed889496ab48e60a0a93fed2f29b94347875319ea90cb16356ab4c2b0e645655
+sourceassertion: []
+compressiontype: gzip
+files:
+- etc/01_prepare.sh
+- etc/02_overlay.sh
+- etc/03_init.sh
+- etc/04_bootscript.sh
+- etc/hostname
+- etc/hosts
+- etc/inittab
+- etc/motd
+- etc/msg/03_init_01.txt
+- etc/msg/03_init_02.txt
+- etc/msg/init_01.txt
+- etc/msg/init_02.txt
+- init
+- var/log/btmp
+- var/log/lastlog
+- var/log/messages
+- var/log/utmp
+- var/log/wtmp

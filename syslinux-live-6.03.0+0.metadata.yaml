@@ -1,0 +1,150 @@
+path: /home/travis/gopath/src/github.com/Luet-lab/livecd-specs/build/syslinux-live-6.03.0+0.package.tar.gz
+dependencies: []
+compilespec:
+  steps:
+  - mkdir -p /boot/syslinux
+  - mv /syslinux/syslinux-6.03/bios/core/isolinux.bin /boot/syslinux
+  - mv /syslinux/syslinux-6.03/bios/com32/elflink/ldlinux/ldlinux.c32 /boot/syslinux
+  - mv /syslinux/syslinux-6.03/bios/mbr/isohdpfx.bin /boot/syslinux
+  env: []
+  prelude:
+  - wget http://kernel.org/pub/linux/utils/boot/syslinux/syslinux-6.03.tar.xz
+  - mkdir -p /syslinux
+  - tar -xvf syslinux-6.03.tar.xz -C /syslinux
+  image: ""
+  seed: luet/cache:3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+  package:
+    id: 0
+    name: syslinux
+    version: 6.03.0+0
+    category: live
+    useflags: []
+    state: ""
+    packagerequires:
+    - id: 0
+      name: seed
+      version: "0.1"
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    packageconflicts: []
+    isset: false
+    provides: []
+    path: ""
+    description: ""
+    uri: []
+    license: ""
+    labels: {}
+  sourceassertion:
+  - package:
+      id: 0
+      name: alpine
+      version: 3.11.3
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires: []
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      packagehash: b3fe7815ec48f83b0ca3a729f18fedf56fa305cbf8abfb57eb09464c7dc330e0
+  - package:
+      id: 0
+      name: seed
+      version: "0.1"
+      category: distro
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: alpine
+        version: 3.11.3
+        category: distro
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        isset: false
+        provides: []
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        labels: {}
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: b3fe7815ec48f83b0ca3a729f18fedf56fa305cbf8abfb57eb09464c7dc330e0
+      packagehash: 3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+  - package:
+      id: 0
+      name: syslinux
+      version: 6.03.0+0
+      category: live
+      useflags: []
+      state: ""
+      packagerequires:
+      - id: 0
+        name: seed
+        version: "0.1"
+        category: distro
+        useflags: []
+        state: ""
+        packagerequires: []
+        packageconflicts: []
+        isset: false
+        provides: []
+        path: ""
+        description: ""
+        uri: []
+        license: ""
+        labels: {}
+      packageconflicts: []
+      isset: false
+      provides: []
+      path: ""
+      description: ""
+      uri: []
+      license: ""
+      labels: {}
+    value: true
+    hash:
+      buildhash: 3a38df838cc7b566e4028f0a0a562895a1ddb49e98b94870a0723b1d866dced6
+      packagehash: 1c623994affcbb17a633800c1585c1270b5c4e807a5fd65ab58afef251e82c8f
+  retrieve: []
+  outputpath: /home/travis/gopath/src/github.com/Luet-lab/livecd-specs/build
+  unpack: false
+  includes:
+  - /boot$|/boot/.*
+checksums:
+  sha256: 0efaa31b3df2e628fc9bcc86135894be6cb75474613a8e646428ac4fb0bec7ec
+sourceassertion: []
+compressiontype: gzip
+files:
+- boot/syslinux/isohdpfx.bin
+- boot/syslinux/isolinux.bin
+- boot/syslinux/ldlinux.c32
