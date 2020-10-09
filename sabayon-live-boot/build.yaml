@@ -12,7 +12,7 @@ steps:
 - mv minimal/src/minimal_boot/ /boot/
 - sed -i 's/Minimal/Sabayon/g' /boot/bios/EFI/BOOT/startup.nsh
 - sed -i 's/Minimal/Sabayon/g' /boot/bios/boot/syslinux/syslinux.cfg
-- sed -i 's:DEFAULT vga:DEFAULT vga\nMENU RESOLUTION 1024x768\nMENU BACKGROUND splash.jpg:g' syslinux.cfg
+- sed -i 's:DEFAULT vga:DEFAULT vga\nMENU RESOLUTION 1024x768\nMENU BACKGROUND splash.jpg:g' /boot/bios/boot/syslinux/syslinux.cfg
 - echo "splash" >> /boot/uefi/loader/loader.conf
 - sed -i 's/Minimal/Sabayon/g' /boot/uefi/loader/entries/mll-x86.conf
 - sed -i 's/Minimal/Sabayon/g' /boot/uefi/loader/entries/mll-x86_64.conf
